@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShakespeareanPokemon.Api", "ShakespeareanPokemon.Api\ShakespeareanPokemon.Api.csproj", "{D465527A-3C4D-490C-9582-8F5EB7D84A1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShakespeareanPokemon.Domain", "ShakespeareanPokemon.Domain\ShakespeareanPokemon.Domain.csproj", "{9BAB62F7-E86C-400B-B147-15842AB8A48F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShakespeareanPokemon.Service", "ShakespeareanPokemon.Service\ShakespeareanPokemon.Service.csproj", "{D5E75389-29D0-4B46-B221-9B204E716C17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7BC863EB-1B40-465A-8D73-07294733144E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShakespeareanPokemon.Service.UnitTests", "ShakespeareanPokemon.Service.UnitTests\ShakespeareanPokemon.Service.UnitTests.csproj", "{04176EEC-DB44-4493-9722-1BACD788B904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D465527A-3C4D-490C-9582-8F5EB7D84A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D465527A-3C4D-490C-9582-8F5EB7D84A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D465527A-3C4D-490C-9582-8F5EB7D84A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D465527A-3C4D-490C-9582-8F5EB7D84A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BAB62F7-E86C-400B-B147-15842AB8A48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAB62F7-E86C-400B-B147-15842AB8A48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAB62F7-E86C-400B-B147-15842AB8A48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAB62F7-E86C-400B-B147-15842AB8A48F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E75389-29D0-4B46-B221-9B204E716C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E75389-29D0-4B46-B221-9B204E716C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E75389-29D0-4B46-B221-9B204E716C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E75389-29D0-4B46-B221-9B204E716C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04176EEC-DB44-4493-9722-1BACD788B904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04176EEC-DB44-4493-9722-1BACD788B904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04176EEC-DB44-4493-9722-1BACD788B904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04176EEC-DB44-4493-9722-1BACD788B904}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04176EEC-DB44-4493-9722-1BACD788B904} = {7BC863EB-1B40-465A-8D73-07294733144E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7116528-10F1-48C2-BF5F-3CA122A11D66}
+	EndGlobalSection
+EndGlobal
