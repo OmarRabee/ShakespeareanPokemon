@@ -1,4 +1,7 @@
-﻿namespace ShakespeareanPokemon.Api.Dependencies
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+
+namespace ShakespeareanPokemon.Api.Dependencies
 {
    public static class HttpClientDependency
    {

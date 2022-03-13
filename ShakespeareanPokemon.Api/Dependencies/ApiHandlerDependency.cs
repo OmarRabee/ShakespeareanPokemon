@@ -1,4 +1,5 @@
-﻿using ShakespeareanPokemon.Domain.Interfaces.ApiHandlers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ShakespeareanPokemon.Domain.Interfaces.ApiHandlers;
 using ShakespeareanPokemon.Service.ApiHandlers;
 
 namespace ShakespeareanPokemon.Api.Dependencies

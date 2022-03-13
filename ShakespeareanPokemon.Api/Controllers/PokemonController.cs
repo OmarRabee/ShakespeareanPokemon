@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShakespeareanPokemon.Domain.Interfaces.Services;
+using System.Threading.Tasks;
 
 namespace ShakespeareanPokemon.Api.Controllers
 {

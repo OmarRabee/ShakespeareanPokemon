@@ -1,4 +1,8 @@
-﻿namespace ShakespeareanPokemon.Api.Middlewares
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Threading.Tasks;
+
+namespace ShakespeareanPokemon.Api.Middlewares
 {
    public class ErrorHandlingMiddleware
    {
