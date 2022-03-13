@@ -5,6 +5,9 @@ namespace ShakespeareanPokemon.Domain.Enums
    public enum PokemonError
    {
       [Description("Failure while getting the pokemon")]
-      ErrorGettingPokemon
+      ErrorGettingPokemon,
+
+      [Description("Pokemon species not found")]
+      PokemonSpeciesNotFound
    }
 }

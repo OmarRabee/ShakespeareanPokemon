@@ -6,9 +6,9 @@ namespace ShakespeareanPokemon.Domain.DTOs
    {
       [JsonPropertyName("name")] public string Name { get; set; }
 
-      [JsonPropertyName("form_descriptions")] public FormDescriptions[] FormDescriptions { get; set; }
+      [JsonPropertyName("form_descriptions")] public FormDescription[] FormDescriptions { get; set; }
    }
-   public class FormDescriptions
+   public class FormDescription
    {
       [JsonPropertyName("description")] public string Description { get; set; }
       [JsonPropertyName("language")] public Language Language { get; set; }
