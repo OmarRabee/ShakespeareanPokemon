@@ -44,3 +44,8 @@ To run the API as a containerized image:
 * Moq 4.17.2
 * Serilog.AspNetCore 5.0.0
 * NSwag.AspNetCore 13.15.10
+
+# What needs to be fixed
+1. Better Logging needs to be done.
+2. Better Exception handling and error specification.
+3. Docker image size to be reduced.
