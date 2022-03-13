@@ -16,7 +16,7 @@ it utilies two RESTful APIs:
 The API contains one endpoint which recieves a pokemon name, and returns the pokemon name and the shakespearean translation for it. to try the API.
 1. Go to `https://localhost:7060/swagger/index.html`.
 2. Click on `try it out`
-3. Pass any pokemon name, for example: `wormadam`
+3. Pass a pokemon name, for example: `wormadam`
 4. Press Execute
 5. A reponse will be sent back:
 `{
