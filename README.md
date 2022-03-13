@@ -32,6 +32,13 @@ The API contains one endpoint which recieves a pokemon name, and returns the pok
 # Unit testing
 To run the unit tests for this project you can run it directly from VS or Rider, or you can navigate to this path: `ShakespeareanPokemon\ShakespeareanPokemon.Service.UnitTests` and run this command `dotnet test`
 
+# Docker
+To run the API as a containerized image:
+1. Go to `ShakespeareanPokemon` directory
+2. Run `docker build -t poke-image -f Dockerfile .`
+3. Run `docker run --name poke-image -p 8081:80 -d poke-image`
+4. In the browser go to `http://localhost:8081/swagger/`
+
 # Nuget Packages used:
 * xunit 2.4.1
 * Moq 4.17.2
