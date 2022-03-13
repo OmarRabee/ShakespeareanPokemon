@@ -23,13 +23,10 @@ namespace ShakespeareanPokemon.Service
          {
             var pokemonSpecies = await _pokemonApiHandler.GetPokemonSpeciesAsync(name);
             if (string.IsNullOrEmpty(pokemonSpecies.Name))
-            {
                return new ServiceResult<PokemonDto>(new ErrorResult(PokemonError.InvalidPokemonName));
-            }
             if (!pokemonSpecies.FormDescriptions.Any(d => d.Language.Name == "en"))
-            {
                return new ServiceResult<PokemonDto>(new ErrorResult(PokemonError.NoEnglishDescriptionFound));
-            }
+
             var translatedDescription = await _pokemonApiHandler.GetShakespereanTranslation(pokemonSpecies.FormDescriptions.FirstOrDefault(d => d.Language.Name == "en")?.Description);
             var pokemon = new PokemonDto() { Name = pokemonSpecies.Name, Description = translatedDescription?.Contents?.TranslatedText };
             return new ServiceResult<PokemonDto>(pokemon);

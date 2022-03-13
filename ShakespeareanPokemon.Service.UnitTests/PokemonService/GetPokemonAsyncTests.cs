@@ -2,7 +2,10 @@
 using Serilog;
 using ShakespeareanPokemon.Domain.DTOs;
 using ShakespeareanPokemon.Domain.DTOs.Responses;
+using ShakespeareanPokemon.Domain.Enums;
+using ShakespeareanPokemon.Domain.Extensions;
 using ShakespeareanPokemon.Domain.Interfaces.ApiHandlers;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -16,13 +19,13 @@ namespace ShakespeareanPokemon.Service.UnitTests.PokemonServiceTests
       PokemonService _pokemonService;
 
       #region Constants
-      static Language SOME_LANGUAGE = new Language() { Name = "SOME_LANG_NAME" };
+      static Language SOME_LANGUAGE = new Language() { Name = "en" };
       static FormDescription SOME_FORM_DESCRIPTION = new FormDescription() { Description = "SOME_DESCRIPTION", Language = SOME_LANGUAGE };
       static string SOME_TRNSLATED_TEXT = "SOME_TRANSLATED_TEXT";
+      static string SOME_POKE_NAME = "SOME_POKE_NAME";
 
-      string SOME_POKE_NAME = "SOME_POKE_NAME";
       TranslateResponse SOME_TRANSLATE_RESPONSE = new TranslateResponse() { Contents = new Contents() { TranslatedText = SOME_TRNSLATED_TEXT } };
-      PokemonSpeciesDto SOME_POKEMON_SPECIES = new PokemonSpeciesDto() { Name = "SOME_SPECIES_NAME", FormDescriptions = new FormDescription[1] { SOME_FORM_DESCRIPTION } };
+      PokemonSpeciesDto SOME_POKEMON_SPECIES = new PokemonSpeciesDto() { Name = SOME_POKE_NAME, FormDescriptions = new FormDescription[1] { SOME_FORM_DESCRIPTION } };
       #endregion
       public GetPokemonAsyncTests()
       {
@@ -48,11 +51,45 @@ namespace ShakespeareanPokemon.Service.UnitTests.PokemonServiceTests
       public async Task GetPokemon_EmptyName_ReturnsInvalidPokemonName()
       {
          // Arrange
+         var pokemonSpecies = new PokemonSpeciesDto() { Name = "", FormDescriptions = new FormDescription[0] };
+         _pokemonApiHandlerMock.Setup(m => m.GetPokemonSpeciesAsync(It.IsAny<string>())).ReturnsAsync(pokemonSpecies);
 
          // Act
          var actualResult = await _pokemonService.GetPokemonAsync(SOME_POKE_NAME);
 
          // Assert
+         Assert.False(actualResult.Success);
+         Assert.True(actualResult.Errors.Any(e => e.ErrorMessage == PokemonError.InvalidPokemonName.GetDescription()));
+      }
+
+      [Fact]
+      public async Task GetPokemon_NoEnglishDescription_ReturnsNoEnglishDescriptionFound()
+      {
+         // Arrange
+         var pokemonSpecies = new PokemonSpeciesDto() { Name = "SOME_NAME", FormDescriptions = new FormDescription[0] };
+         _pokemonApiHandlerMock.Setup(m => m.GetPokemonSpeciesAsync(It.IsAny<string>())).ReturnsAsync(pokemonSpecies);
+
+         // Act
+         var actualResult = await _pokemonService.GetPokemonAsync(SOME_POKE_NAME);
+
+         // Assert
+         Assert.False(actualResult.Success);
+         Assert.True(actualResult.Errors.Any(e => e.ErrorMessage == PokemonError.NoEnglishDescriptionFound.GetDescription()));
+      }
+
+      [Fact]
+      public async Task GetPokemon_ThrowsException_LogExceptionAndReturnsError()
+      {
+         // Arrange
+         _pokemonApiHandlerMock.Setup(m => m.GetPokemonSpeciesAsync(It.IsAny<string>())).Throws(new System.Exception("SOME_EXCEPTION_MESSAGE"));
+
+         // Act
+         var actualResult = await _pokemonService.GetPokemonAsync(SOME_POKE_NAME);
+
+         // Assert
+         _logger.Verify(m => m.Error(It.IsAny<string>()), Times.Once);
+         Assert.False(actualResult.Success);
+         Assert.True(actualResult.Errors.Any(e => e.ErrorMessage == PokemonError.ErrorGettingPokemon.GetDescription()));
       }
    }
 }
