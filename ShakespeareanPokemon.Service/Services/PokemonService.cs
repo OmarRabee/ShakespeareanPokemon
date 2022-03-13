@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Options;
+using Serilog;
 using ShakespeareanPokemon.Domain.DTOs;
 using ShakespeareanPokemon.Domain.Enums;
 using ShakespeareanPokemon.Domain.Interfaces.ApiHandlers;
@@ -11,9 +12,12 @@ namespace ShakespeareanPokemon.Service
    {
       private readonly ILogger _logger;
       private readonly IPokemonApiHandler _pokemonApiHandler;
-      public PokemonService(IPokemonApiHandler pokemonApiHandler, ILogger logger)
+      private readonly PokemonSettings _pokemonSettings;
+
+      public PokemonService(IPokemonApiHandler pokemonApiHandler, IOptions<PokemonSettings> pokemonSettings, ILogger logger)
       {
          _pokemonApiHandler = pokemonApiHandler;
+         _pokemonSettings = pokemonSettings.Value;
          _logger = logger;
       }
 
@@ -24,11 +28,11 @@ namespace ShakespeareanPokemon.Service
             var pokemonSpecies = await _pokemonApiHandler.GetPokemonSpeciesAsync(name);
             if (string.IsNullOrEmpty(pokemonSpecies.Name))
                return new ServiceResult<PokemonDto>(new ErrorResult(PokemonError.InvalidPokemonName));
-            if (!pokemonSpecies.FormDescriptions.Any(d => d.Language.Name == "en"))
+            if (!pokemonSpecies.FormDescriptions.Any(d => d?.Language?.Name == _pokemonSettings.DescriptionLanguage))
                return new ServiceResult<PokemonDto>(new ErrorResult(PokemonError.NoEnglishDescriptionFound));
 
-            var translatedDescription = await _pokemonApiHandler.GetShakespereanTranslation(pokemonSpecies.FormDescriptions.FirstOrDefault(d => d.Language.Name == "en")?.Description);
-            var pokemon = new PokemonDto() { Name = pokemonSpecies.Name, Description = translatedDescription?.Contents?.TranslatedText };
+            var translatedDescription = await _pokemonApiHandler.GetShakespeareanTranslation(pokemonSpecies.FormDescriptions.FirstOrDefault(d => d?.Language?.Name == _pokemonSettings.DescriptionLanguage)?.Description);
+            PokemonDto? pokemon = new PokemonDto() { Name = pokemonSpecies.Name, Description = translatedDescription?.Contents?.TranslatedText };
             return new ServiceResult<PokemonDto>(pokemon);
          }
          catch (Exception ex)

@@ -5,11 +5,11 @@ using ShakespeareanPokemon.Api.Dependencies;
 using ShakespeareanPokemon.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var pokemonSettings = builder.Services.RegisterPokemonSettings(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.RegisterServices();
 builder.Services.RegisterApiHadndlers();
-builder.Services.RegisterHttpClient();
+builder.Services.RegisterHttpClient(pokemonSettings);
 builder.Services.AddOpenApiDocument();
 builder.Services.AddHealthChecks();
 

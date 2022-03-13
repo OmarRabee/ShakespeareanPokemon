@@ -6,6 +6,6 @@ namespace ShakespeareanPokemon.Domain.Interfaces.ApiHandlers
    public interface IPokemonApiHandler
    {
       Task<PokemonSpeciesDto> GetPokemonSpeciesAsync(string name);
-      Task<TranslateResponse> GetShakespereanTranslation(string textToBeTranslated);
+      Task<TranslateResponse> GetShakespeareanTranslation(string textToBeTranslated);
    }
 }
