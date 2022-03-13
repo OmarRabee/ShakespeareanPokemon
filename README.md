@@ -25,12 +25,12 @@ The API contains one endpoint which recieves a pokemon name, and returns the pok
 3. Pass any pokemon name, for example: `wormadam`
 4. Press Execute
 5. A reponse will be sent back:
-{
+`{
   "result": {
     "name": "wormadam",
     "description": "Forms hath't different stats and movepools. During evolution,  burmy's current cloak becomes wormadam's form,  and can nay longer beest did doth change."
   },
   "success": true,
   "errors": null
-}
+}`
 ![image](https://user-images.githubusercontent.com/11810466/158057208-8e2edd45-78b0-4555-9289-982dff0199f6.png)
