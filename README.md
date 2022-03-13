@@ -1,5 +1,5 @@
 # ShakespeareanPokemon
-A simple API for getting a pokemon with its shakespearean description, it's built on .NET 6
+A simple RESTful API for getting a pokemon with its shakespearean description, it's built on .NET 6
 it utilies two RESTful APIs:
 1. RESTful Pokémon API - https://pokeapi.co/
 2. Shakespeare translator API - https://funtranslations.com/api/shakespeare
