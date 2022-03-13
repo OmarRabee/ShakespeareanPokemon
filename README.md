@@ -7,12 +7,6 @@ it utilies two RESTful APIs:
 # Requirements:
 1. .NET 6
 
-# Nuget Packages used:
-* xunit 2.4.1
-* Moq 4.17.2
-* Serilog.AspNetCore 5.0.0
-* NSwag.AspNetCore 13.15.10
-
 # How to run:
 1. Clone the repo.
 2. Go to this path `ShakespeareanPokemon\ShakespeareanPokemon.Api` and run this command `dotnet run`
@@ -37,3 +31,9 @@ The API contains one endpoint which recieves a pokemon name, and returns the pok
 
 # Unit testing
 To run the unit tests for this project you can run it directly from VS or Rider, or you can navigate to this path: `ShakespeareanPokemon\ShakespeareanPokemon.Service.UnitTests` and run this command `dotnet test`
+
+# Nuget Packages used:
+* xunit 2.4.1
+* Moq 4.17.2
+* Serilog.AspNetCore 5.0.0
+* NSwag.AspNetCore 13.15.10
