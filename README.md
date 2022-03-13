@@ -34,3 +34,6 @@ The API contains one endpoint which recieves a pokemon name, and returns the pok
   "errors": null
 }`
 ![image](https://user-images.githubusercontent.com/11810466/158057208-8e2edd45-78b0-4555-9289-982dff0199f6.png)
+
+# Unit testing
+To run the unit tests for this project you can run it directly from VS or Rider, or you can navigate to this path: `ShakespeareanPokemon\ShakespeareanPokemon.Service.UnitTests` and run this command `dotnet test`
