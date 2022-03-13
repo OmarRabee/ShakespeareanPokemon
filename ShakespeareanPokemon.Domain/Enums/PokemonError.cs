@@ -8,6 +8,12 @@ namespace ShakespeareanPokemon.Domain.Enums
       ErrorGettingPokemon,
 
       [Description("Pokemon species not found")]
-      PokemonSpeciesNotFound
+      PokemonSpeciesNotFound,
+
+      [Description("Invalid Pokemon name")]
+      InvalidPokemonName,
+
+      [Description("No description found")]
+      NoEnglishDescriptionFound
    }
 }
