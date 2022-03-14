@@ -9,9 +9,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ShakespeareanPokemon.Service.UnitTests.PokemonServiceTests
+namespace ShakespeareanPokemon.Service.UnitTests.PokemonServiceUnitTests
 {
-   public class GetPokemonAsyncTests
+   public class GetPokemonAsyncUnitTests
    {
       private readonly Mock<IPokemonApiHandler> _pokemonApiHandlerMock = new Mock<IPokemonApiHandler>();
       private readonly Mock<ILogger> _logger = new Mock<ILogger>();
@@ -27,7 +27,7 @@ namespace ShakespeareanPokemon.Service.UnitTests.PokemonServiceTests
       TranslateResponse SOME_TRANSLATE_RESPONSE = new TranslateResponse() { Contents = new Contents() { TranslatedText = SOME_TRNSLATED_TEXT } };
       PokemonSpeciesDto SOME_POKEMON_SPECIES = new PokemonSpeciesDto() { Name = SOME_POKE_NAME, FormDescriptions = new FormDescription[1] { SOME_FORM_DESCRIPTION } };
       #endregion
-      public GetPokemonAsyncTests()
+      public GetPokemonAsyncUnitTests()
       {
          _pokemonService = new PokemonService(_pokemonApiHandlerMock.Object, _logger.Object);
       }
