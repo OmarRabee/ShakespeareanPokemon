@@ -1,6 +1,6 @@
 # ShakespeareanPokemon
 A simple RESTful API for getting a pokemon with its shakespearean description, it's built on .NET 6
-it utilies two RESTful APIs:
+and utilies two RESTful APIs:
 1. RESTful Pokémon API - https://pokeapi.co/
 2. Shakespeare translator API - https://funtranslations.com/api/shakespeare
 
@@ -16,7 +16,7 @@ it utilies two RESTful APIs:
 The API contains one endpoint which recieves a pokemon name, and returns the pokemon name and the shakespearean translation for it. to try the API.
 1. Go to `https://localhost:7060/swagger/index.html`.
 2. Click on `try it out`
-3. Pass any pokemon name, for example: `wormadam`
+3. Pass a pokemon name, for example: `wormadam`
 4. Press Execute
 5. A reponse will be sent back:
 `{
@@ -32,8 +32,20 @@ The API contains one endpoint which recieves a pokemon name, and returns the pok
 # Unit testing
 To run the unit tests for this project you can run it directly from VS or Rider, or you can navigate to this path: `ShakespeareanPokemon\ShakespeareanPokemon.Service.UnitTests` and run this command `dotnet test`
 
+# Docker
+To run the API as a containerized image:
+1. Go to `ShakespeareanPokemon` directory
+2. Run `docker build -t poke-image -f Dockerfile .`
+3. Run `docker run --name poke-image -p 8081:80 -d poke-image`
+4. In the browser go to `http://localhost:8081/swagger/`
+
 # Nuget Packages used:
 * xunit 2.4.1
 * Moq 4.17.2
 * Serilog.AspNetCore 5.0.0
 * NSwag.AspNetCore 13.15.10
+
+# What needs to be fixed
+1. Better Logging needs to be done.
+2. Better Exception handling and error specification.
+3. Docker image size to be reduced.
