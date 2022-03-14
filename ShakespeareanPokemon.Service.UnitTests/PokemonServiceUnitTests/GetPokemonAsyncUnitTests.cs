@@ -14,11 +14,6 @@ namespace ShakespeareanPokemon.Service.UnitTests.PokemonServiceUnitTests
 {
    public class GetPokemonAsyncUnitTests
    {
-      private readonly Mock<IPokemonApiHandler> _pokemonApiHandlerMock = new Mock<IPokemonApiHandler>();
-      private readonly Mock<ILogger> _logger = new Mock<ILogger>();
-      private readonly Mock<IOptions<PokemonSettings>> pokemonSettingsMock = new Mock<IOptions<PokemonSettings>>();
-      readonly PokemonService _pokemonService;
-
       #region Constants
       static readonly Language SOME_LANGUAGE = new Language() { Name = "en" };
       static readonly FormDescription SOME_FORM_DESCRIPTION = new FormDescription() { Description = "SOME_DESCRIPTION", Language = SOME_LANGUAGE };
@@ -27,9 +22,20 @@ namespace ShakespeareanPokemon.Service.UnitTests.PokemonServiceUnitTests
       readonly TranslateResponse SOME_TRANSLATE_RESPONSE = new TranslateResponse() { Contents = new Contents() { TranslatedText = SOME_TRNSLATED_TEXT } };
       readonly PokemonSpeciesDto SOME_POKEMON_SPECIES = new PokemonSpeciesDto() { Name = SOME_POKE_NAME, FormDescriptions = new FormDescription[1] { SOME_FORM_DESCRIPTION } };
       #endregion
+
+      readonly static PokemonSettings pokemonSettings = new PokemonSettings()
+      {
+         DescriptionLanguage = SOME_LANGUAGE.Name,
+      };
+      readonly static IOptions<PokemonSettings> pokemonSettingsOptions = Options.Create(pokemonSettings);
+      readonly Mock<IPokemonApiHandler> _pokemonApiHandlerMock = new Mock<IPokemonApiHandler>();
+      readonly Mock<ILogger> _logger = new Mock<ILogger>();
+      readonly PokemonService _pokemonService;
+
+
       public GetPokemonAsyncUnitTests()
       {
-         _pokemonService = new PokemonService(_pokemonApiHandlerMock.Object, pokemonSettingsMock.Object, _logger.Object);
+         _pokemonService = new PokemonService(_pokemonApiHandlerMock.Object, pokemonSettingsOptions, _logger.Object);
       }
 
       [Fact]

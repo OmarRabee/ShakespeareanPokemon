@@ -2,8 +2,8 @@
 {
    public class PokemonSettings
    {
-      public string? DescriptionLanguage { get; set; }
-      public string? PoekmonApiBase { get; set; }
-      public string? ShakespeareanTranslationApiBase { get; set; }
+      public string? DescriptionLanguage { get; set; } = string.Empty;
+      public string? PoekmonApiBase { get; set; } = string.Empty;
+      public string? ShakespeareanTranslationApiBase { get; set; } = string.Empty;
    }
 }

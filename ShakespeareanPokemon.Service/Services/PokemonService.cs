@@ -28,7 +28,7 @@ namespace ShakespeareanPokemon.Service
             var pokemonSpecies = await _pokemonApiHandler.GetPokemonSpeciesAsync(name);
             if (string.IsNullOrEmpty(pokemonSpecies.Name))
                return new ServiceResult<PokemonDto>(new ErrorResult(PokemonError.InvalidPokemonName));
-            if (!pokemonSpecies.FormDescriptions.Any(d => d?.Language?.Name == _pokemonSettings.DescriptionLanguage))
+            if (!pokemonSpecies.FormDescriptions.Any(d => d?.Language?.Name == _pokemonSettings?.DescriptionLanguage))
                return new ServiceResult<PokemonDto>(new ErrorResult(PokemonError.NoEnglishDescriptionFound));
 
             var translatedDescription = await _pokemonApiHandler.GetShakespeareanTranslation(pokemonSpecies.FormDescriptions.FirstOrDefault(d => d?.Language?.Name == _pokemonSettings.DescriptionLanguage)?.Description);
